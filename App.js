@@ -1,21 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import {createAppContainer} from 'react-navigation'
+import { createBottomTabNavigator } from "react-navigation-tabs"; 
+import Facebook from './screens/fb'
+import Insta from './screens/in'
 
-export default function App() {
+export default class App extends Component {
+  render(){
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AppContainer/>
   );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const TabNavigator=createBottomTabNavigator({
+  Facebook:{screen:Facebook},
+  Instagram:{screen:Insta}
+})
+const AppContainer=createAppContainer(TabNavigator)
